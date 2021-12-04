@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Supfitness</string>
+    <string name="tab_layout_one">Weight</string>
+    <string name="tab_layout_two">Track</string>
+    <string name="tab_layout_three">Curve</string>
+</resources>
