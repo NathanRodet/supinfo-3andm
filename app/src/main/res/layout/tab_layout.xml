@@ -10,24 +10,25 @@
         android:layout_height="wrap_content"
         android:maxHeight="100dp"
         android:orientation="horizontal"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button"
-            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/buttonWeight"
+            android:backgroundTint="#FFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:height="80dp"
-            android:shadowRadius="@integer/material_motion_duration_long_2"
             android:text="@string/tab_layout_one"
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/button2"
-            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/buttonTrack"
+            android:backgroundTint="#FFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -36,8 +37,8 @@
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/button3"
-            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/buttonChart"
+            android:backgroundTint="#FFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
