@@ -27,16 +27,6 @@
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/buttonTrack"
-            android:backgroundTint="#FFF"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:height="80dp"
-            android:text="@string/tab_layout_two"
-            android:textColor="@color/black" />
-
-        <Button
             android:id="@+id/buttonChart"
             android:backgroundTint="#FFF"
             android:layout_width="wrap_content"
@@ -44,6 +34,16 @@
             android:layout_weight="1"
             android:height="80dp"
             android:text="@string/tab_layout_three"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/buttonTrack"
+            android:backgroundTint="#FFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:height="80dp"
+            android:text="@string/tab_layout_two"
             android:textColor="@color/black" />
 
     </LinearLayout>
