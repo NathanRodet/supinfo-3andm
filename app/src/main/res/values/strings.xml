@@ -5,4 +5,8 @@
     <string name="tab_layout_three">Analyse</string>
     <string name="chart_title">Courbe d\'évolution poids/jour</string>
     <string name="chart_description">Jour</string>
+    <string name="submit">submit</string>
+    <string name="weight_fragment">Ajouter un poids</string>
+    <string name="ajouter_un_poids">Ajouter un poids</string>
+    <string name="bouton_add">bouton add</string>
 </resources>
