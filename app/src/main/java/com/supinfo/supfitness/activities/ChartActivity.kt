@@ -81,6 +81,7 @@ class ChartActivity : AppCompatActivity() {
 
 
         lineChart.axisRight.setDrawLabels(false)
+        lineChart.description.text = ""
         val xAxis: XAxis = lineChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
 
