@@ -37,12 +37,14 @@ dependencies {
     // Import Room
     def MPAndroidChartVersion = "3.1.0"
     def roomVersion = "2.3.0"
+    def core_ktx = "1.7.0"
     def lifecycle_version = "2.4.0"
 
     implementation      ("androidx.room:room-runtime:$roomVersion")
     annotationProcessor ("androidx.room:room-compiler:$roomVersion")
     kapt                ("androidx.room:room-compiler:$roomVersion")
     implementation      ("androidx.room:room-ktx:$roomVersion")
+    implementation      ("androidx.core:core-ktx:$core_ktx")
     implementation      ("com.github.PhilJay:MPAndroidChart:v$MPAndroidChartVersion")
 
     implementation 'androidx.core:core-ktx:1.7.0'

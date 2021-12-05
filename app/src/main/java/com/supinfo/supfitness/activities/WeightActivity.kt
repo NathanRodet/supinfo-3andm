@@ -4,8 +4,12 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import com.supinfo.supfitness.R
+import com.supinfo.supfitness.database.AppDatabase
+import com.supinfo.supfitness.database.data.Weight
+import com.supinfo.supfitness.utilities.GetDate
 import kotlinx.android.synthetic.main.tab_layout.*
 
 class WeightActivity : AppCompatActivity() {
@@ -13,6 +17,17 @@ class WeightActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //Instance Database from companion object
+        val database = AppDatabase.getInstance(this)
+
+
+
+
+
+
+
+
 
         // TabLayout Navigation
         val buttonWeight: Button = findViewById<Button>(R.id.buttonWeight)
