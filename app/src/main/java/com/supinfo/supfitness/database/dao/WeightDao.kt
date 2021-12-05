@@ -11,13 +11,13 @@ import com.supinfo.supfitness.database.data.Weight
 interface WeightDao {
 
     @Query("SELECT weight FROM Weight")
-    fun getWeights(): MutableList<Int>
+    fun getWeights(): MutableList<Float>
 
     @Query("SELECT date FROM Weight")
     fun getDates(): MutableList<String>
 
     @Query("SELECT weight FROM Weight")
-    fun loadWeights(): LiveData<List<Int>>
+    fun loadWeights(): LiveData<List<Float>>
 
     @Query (" SELECT * FROM Weight ")
     fun getList () : LiveData<List<Weight>>

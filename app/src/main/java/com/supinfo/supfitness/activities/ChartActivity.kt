@@ -18,6 +18,8 @@ import com.github.mikephil.charting.components.XAxis
 import com.supinfo.supfitness.database.AppDatabase
 import com.supinfo.supfitness.database.data.Weight
 import com.supinfo.supfitness.utilities.GetDate
+import java.lang.Exception
+import java.lang.NumberFormatException
 
 class ChartActivity : AppCompatActivity() {
     lateinit var lineList:ArrayList<Entry>
@@ -31,44 +33,50 @@ class ChartActivity : AppCompatActivity() {
         //Instance Database from companion object
         val database = AppDatabase.getInstance(this)
 
-        //Get Data
-
-        //Initialise methods from class
-        val setDate = GetDate()
-        val dateValue = setDate.getCurrentDateTime()
-        val userName = "nathan"
-        val userWeight = 72
-
-        //try to insert data
-        val data = Weight(
-            user = userName,
-            weight = userWeight,
-            date = dateValue
-        ).apply {
-            user = userName
-            weight = userWeight
-            date = dateValue
-        }
-
-        //database.getWeightDao().insertAll(data)
-        Log.d("Debug", "insertData $data")
-
-        //val dataTest = database.getWeightDao().getAll()
-        //Log.d("Debug", "DB $dataTest")
+//        //Get Data
+//
+//        //Initialise methods from class
+//        val setDate = GetDate()
+//        val dateValue = setDate.getCurrentDateTime()
+//        val userName = "nathan"
+//        val userWeight = 60f
+//
+//        //try to insert data
+//        val data = Weight(
+//            user = userName,
+//            weight = userWeight,
+//            date = dateValue
+//        ).apply {
+//            user = userName
+//            weight = userWeight
+//            date = dateValue
+//        }
+//
+//        database.getWeightDao().insertAll(data)
+//        Log.d("Debug", "insertData $data")
+//
+//        val dataTest = database.getWeightDao().getAll()
+//        Log.d("Debug", "DB $dataTest")
 
         val dataWeights = database.getWeightDao().getWeights()
-        Log.d("Debug", "dataWeights $dataWeights")
+        Log.d("DebugChart", "dataWeights $dataWeights")
         val dataDates = database.getWeightDao().getDates()
-        Log.d("Debug", "dataDates $dataDates")
-
-        var x = dataWeights[1].toFloat()
+        Log.d("DebugChart", "dataDates $dataDates")
 
         //Make Chart
-
         lineList = ArrayList()
-        lineList.add(Entry(10f ,x))
-        lineList.add(Entry(100f, 50f))
+        var x = 0f
+        var y = 0f
 
+        try {
+            for (y in dataWeights) {
+                x += 1f
+                lineList.add(Entry(x, y))
+                Log.d("DebugChart", "entry $x  $y")
+            }
+        }catch (e: Exception){
+            throw e
+        }
 
         lineDataSet = LineDataSet(lineList, "Weight")
         lineData = LineData(lineDataSet)
@@ -81,7 +89,8 @@ class ChartActivity : AppCompatActivity() {
 
 
         lineChart.axisRight.setDrawLabels(false)
-        lineChart.description.text = ""
+        lineChart.description.text = getString(R.string.chart_description)
+        lineChart.description.textSize = 14f
         val xAxis: XAxis = lineChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
 

@@ -3,5 +3,6 @@
     <string name="tab_layout_one">Poids</string>
     <string name="tab_layout_two">Course</string>
     <string name="tab_layout_three">Analyse</string>
-    <string name="chart_title">Courbe d\'évolution poids/date</string>
+    <string name="chart_title">Courbe d\'évolution poids/jour</string>
+    <string name="chart_description">Jour</string>
 </resources>

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class Weight(
     @PrimaryKey(autoGenerate = true) var id: Int = 0,
     @ColumnInfo(name = "user") var user: String,
-    @ColumnInfo(name = "weight") var weight: Int,
+    @ColumnInfo(name = "weight") var weight: Float,
     @ColumnInfo(name = "date") var date: String,
 )
 
