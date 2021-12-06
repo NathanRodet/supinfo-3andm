@@ -9,4 +9,5 @@
     <string name="weight_fragment">Ajouter un poids</string>
     <string name="ajouter_un_poids">Ajouter un poids</string>
     <string name="bouton_add">bouton add</string>
+    <string name="kilogramme">KG</string>
 </resources>

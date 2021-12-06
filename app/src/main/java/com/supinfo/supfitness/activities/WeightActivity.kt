@@ -1,23 +1,15 @@
 package com.supinfo.supfitness.activities
 
-import android.annotation.SuppressLint
-import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Window
 import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.supinfo.supfitness.R
 import com.supinfo.supfitness.database.AppDatabase
 import com.supinfo.supfitness.utilities.DialogWeight
-import kotlinx.android.synthetic.main.tab_layout.*
-import com.google.android.material.dialog.MaterialDialogs as MaterialDialogs
 
 class WeightActivity : AppCompatActivity() {
 
@@ -45,30 +37,18 @@ class WeightActivity : AppCompatActivity() {
             startActivity(Intent(this, ChartActivity::class.java))
         }
 
+
+        val dialog = DialogWeight()
+
+
         buttonAdd.setOnClickListener() {
             Log.d("debug", "click")
-            showDialog()
-
+            dialog.showDialog(this)
 
         }
 
 
     }
 
-    private fun showDialog() {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.weight_form)
 
-
-        val yesBtn = dialog.findViewById(R.id.buttonWeight) as Button
-
-        yesBtn.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        dialog.show()
-
-    }
 }
