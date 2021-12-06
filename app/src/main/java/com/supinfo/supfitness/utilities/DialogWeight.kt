@@ -72,7 +72,7 @@ class DialogWeight: DialogFragment(){
 
             if(d.user.trim().isNotEmpty()) {
 
-                Toast.makeText(context, "Le poids de l'utilisateur: "+d.user+" a été ajouté !", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Le poids de l'utilisateur: " + d.user + " a été ajouté !", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
 
             }else{
