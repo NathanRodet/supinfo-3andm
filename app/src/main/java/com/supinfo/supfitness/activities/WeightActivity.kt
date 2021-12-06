@@ -1,5 +1,6 @@
 package com.supinfo.supfitness.activities
 
+
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity

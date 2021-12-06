@@ -10,4 +10,6 @@
     <string name="ajouter_un_poids">Ajouter un poids</string>
     <string name="bouton_add">bouton add</string>
     <string name="kilogramme">KG</string>
+    <string name="logo_splash_screen_description">Logo for splash screen</string>
+    <string name="GOOGLE_API">AIzaSyAA9YDQuyiKT1sdpdRVktZQR7dzp8XdGuw</string>
 </resources>
