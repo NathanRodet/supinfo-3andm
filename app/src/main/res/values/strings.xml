@@ -6,4 +6,5 @@
     <string name="chart_title">Courbe d\'évolution poids/jour</string>
     <string name="chart_description">Jour</string>
     <string name="logo_splash_screen_description">Logo for splash screen</string>
+    <string name="GOOGLE_API">AIzaSyAA9YDQuyiKT1sdpdRVktZQR7dzp8XdGuw</string>
 </resources>
