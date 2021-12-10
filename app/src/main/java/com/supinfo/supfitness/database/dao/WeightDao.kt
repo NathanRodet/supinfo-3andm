@@ -13,7 +13,7 @@ interface WeightDao {
     @Query("SELECT weight FROM Weight")
     fun getWeights(): MutableList<Float>
 
-    @Query("SELECT date FROM Weight")
+    @Query("SELECT date FROM Weight WHERE id=(SELECT MAX(id) FROM Weight)")
     fun getDates(): MutableList<String>
 
     @Query("SELECT weight FROM Weight")
