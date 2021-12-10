@@ -6,10 +6,10 @@
     <string name="chart_title">Courbe d\'évolution poids/jour</string>
     <string name="chart_description">Jour</string>
     <string name="submit">submit</string>
-    <string name="weight_fragment">Ajouter un poids</string>
-    <string name="ajouter_un_poids">Ajouter un poids</string>
-    <string name="bouton_add">bouton add</string>
-    <string name="kilogramme">KG</string>
+    <string name="add_weight">Ajouter un poids</string>
+    <string name="add_button">bouton add</string>
+    <string name="kilogram">KG</string>
     <string name="logo_splash_screen_description">Logo for splash screen</string>
-    <string name="GOOGLE_API">AIzaSyAA9YDQuyiKT1sdpdRVktZQR7dzp8XdGuw</string>
+    <string name="MAPS_API_KEY">AIzaSyAA9YDQuyiKT1sdpdRVktZQR7dzp8XdGuw</string>
+    <string name="username_input_hint">Saisir un nom</string>
 </resources>

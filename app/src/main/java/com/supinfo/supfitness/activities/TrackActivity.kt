@@ -16,7 +16,7 @@ class TrackActivity : AppCompatActivity() {
         val buttonWeight: Button = findViewById<Button>(R.id.buttonWeight)
         val buttonTrack: Button = findViewById<Button>(R.id.buttonTrack)
         val buttonChart: Button = findViewById<Button>(R.id.buttonChart)
-        buttonTrack.setBackgroundColor(Color.parseColor("#FF018786"))
+        buttonTrack.setBackgroundColor(Color.parseColor("#33018786"))
 
         buttonWeight.setOnClickListener(){
             startActivity(Intent(this, WeightActivity::class.java))

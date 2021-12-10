@@ -32,21 +32,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/weight_fragment"
+            android:text="@string/add_weight"
             android:textAlignment="center"
             android:textSize="25sp"
             android:textStyle="bold" />
-
-
-
-
 
         <EditText
             android:id="@+id/username"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:hint="Saisir un nom"
+            android:hint="@string/username_input_hint"
             android:textAlignment="center"
             />
 
@@ -65,7 +61,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:text="@string/kilogramme"
+                    android:text="@string/kilogram"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 

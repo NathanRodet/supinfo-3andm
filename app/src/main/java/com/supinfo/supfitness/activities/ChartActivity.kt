@@ -22,6 +22,7 @@ import java.lang.Exception
 import java.lang.NumberFormatException
 
 class ChartActivity : AppCompatActivity() {
+    // Preparing MPAndroidChart variables
     lateinit var lineList:ArrayList<Entry>
     private lateinit var lineDataSet: LineDataSet
     lateinit var lineData: LineData
@@ -30,40 +31,12 @@ class ChartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chart)
 
-        //Instance Database from companion object
+        // Instance Database from companion object
         val database = AppDatabase.getInstance(this)
-
-//        //Get Data
-//
-//        //Initialise methods from class
-//        val setDate = GetDate()
-//        val dateValue = setDate.getCurrentDateTime()
-//        val userName = "nathan"
-//        val userWeight = 60f
-//
-//        //try to insert data
-//        val data = Weight(
-//            user = userName,
-//            weight = userWeight,
-//            date = dateValue
-//        ).apply {
-//            user = userName
-//            weight = userWeight
-//            date = dateValue
-//        }
-//
-//        database.getWeightDao().insertAll(data)
-//        Log.d("Debug", "insertData $data")
-//
-//        val dataTest = database.getWeightDao().getAll()
-//        Log.d("Debug", "DB $dataTest")
-
+        // Getting weight data to draw chart
         val dataWeights = database.getWeightDao().getWeights()
-        Log.d("DebugChart", "dataWeights $dataWeights")
-        val dataDates = database.getWeightDao().getDates()
-        Log.d("DebugChart", "dataDates $dataDates")
 
-        //Make Chart
+        // Processing data on chart creation
         lineList = ArrayList()
         var x = 0f
         var y = 0f
@@ -86,8 +59,6 @@ class ChartActivity : AppCompatActivity() {
         lineDataSet.valueTextColor = Color.BLACK
         lineDataSet.valueTextSize = 12f
         lineDataSet.setDrawFilled(true)
-
-
         lineChart.axisRight.setDrawLabels(false)
         lineChart.description.text = getString(R.string.chart_description)
         lineChart.description.textSize = 14f
@@ -99,7 +70,7 @@ class ChartActivity : AppCompatActivity() {
         val buttonWeight: Button = findViewById<Button>(R.id.buttonWeight)
         val buttonTrack: Button = findViewById<Button>(R.id.buttonTrack)
         val buttonChart: Button = findViewById<Button>(R.id.buttonChart)
-        buttonChart.setBackgroundColor(Color.parseColor("#FF018786"))
+        buttonChart.setBackgroundColor(Color.parseColor("#33018786"))
 
         buttonWeight.setOnClickListener {
             startActivity(Intent(this, WeightActivity::class.java))

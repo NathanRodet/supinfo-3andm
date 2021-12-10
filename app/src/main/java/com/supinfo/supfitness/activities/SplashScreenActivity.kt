@@ -28,7 +28,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val slideAnimation = AnimationUtils.loadAnimation(this, R.anim.side_slide)
         logo.startAnimation(slideAnimation)
-
     }
 
     private val runnable = Runnable {

@@ -97,6 +97,7 @@ class WeightActivity : AppCompatActivity() {
                                 weight = userWeight
                                 date = dateValue
                             }
+
                             database.getWeightDao().insertAll(data)
                             val dataTest = database.getWeightDao().getAll()
                             // Test
@@ -133,7 +134,7 @@ class WeightActivity : AppCompatActivity() {
         val buttonWeight: Button = findViewById(R.id.buttonWeight)
         val buttonTrack: Button = findViewById(R.id.buttonTrack)
         val buttonChart: Button = findViewById(R.id.buttonChart)
-        buttonWeight.setBackgroundColor(Color.parseColor("#FF018786"))
+        buttonWeight.setBackgroundColor(Color.parseColor("#33018786"))
 
         buttonWeight.setOnClickListener {
             startActivity(Intent(this, WeightActivity::class.java))
