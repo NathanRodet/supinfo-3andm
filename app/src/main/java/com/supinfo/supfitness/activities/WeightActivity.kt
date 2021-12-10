@@ -25,9 +25,9 @@ class WeightActivity : AppCompatActivity() {
         //Instance Database from companion object
         val database = AppDatabase.getInstance(this)
 
+        // Preparing data for database insert and checking boolean
         val setDate = GetDate()
         val dateValue = setDate.getCurrentDateTime()
-
 
         // Previous Date
         val previousDateHolder = database.getWeightDao().getDates()
@@ -39,7 +39,6 @@ class WeightActivity : AppCompatActivity() {
         Log.d("debugWeight", "previousDate $previousDate")
 
         // Today's Date
-        val todayDateHolder = dateValue
         Log.d("debugWeight", "todayDateHolder $dateValue")
         var todayDateSplitter = dateValue.toString().split(" ").toTypedArray()
         Log.d("debugWeight", "todayDateSplitter $todayDateSplitter")
@@ -48,6 +47,7 @@ class WeightActivity : AppCompatActivity() {
         Log.d("debugWeight", "todayDate $todayDate")
         Log.d("debugWeight", "boolean " + todayDate.equals("2021/12/08",true))
 
+        //dialog
         fun showDialog(context: Context){
             val dialog = Dialog(context)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -99,15 +99,13 @@ class WeightActivity : AppCompatActivity() {
                             }
 
                             database.getWeightDao().insertAll(data)
-                            val dataTest = database.getWeightDao().getAll()
-                            // Test
 
+                            // Test logs for input
                             Log.d("debugWeight", "insertData $data")
-                            Log.d("debugWeight", "weightTable $dataTest")
 
+                            // Success toast
                             Toast.makeText(context,
                                 "Le poids de l'utilisateur: $userName a été ajouté !", Toast.LENGTH_SHORT).show()
-
 
                         } catch (e: Exception){
                             Log.d("Error", "$e")
@@ -125,6 +123,7 @@ class WeightActivity : AppCompatActivity() {
 
         val buttonAdd: FloatingActionButton = findViewById(R.id.fab)
 
+        //fab button
         buttonAdd.setOnClickListener {
             Log.d("debug", "click")
             showDialog(this)

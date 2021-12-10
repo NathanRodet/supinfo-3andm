@@ -13,6 +13,7 @@ import com.supinfo.supfitness.R
 import com.supinfo.supfitness.databinding.ActivitySplashScreenBinding
 
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
     private val handler = Handler(Looper.getMainLooper())
@@ -45,7 +46,6 @@ class SplashScreenActivity : AppCompatActivity() {
         handler.postDelayed(runnable, 5000)
     }
 
-    // Function pause if needed
     override fun onPause() {
         super.onPause()
         handler.removeCallbacks(runnable)
