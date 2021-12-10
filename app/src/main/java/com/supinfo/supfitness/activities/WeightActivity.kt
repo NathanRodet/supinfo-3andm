@@ -29,22 +29,30 @@ class WeightActivity : AppCompatActivity() {
         val setDate = GetDate()
         val dateValue = setDate.getCurrentDateTime()
 
+
         // Previous Date
         val previousDateHolder = database.getWeightDao().getDates()
-        Log.d("debugWeight", "previousDateHolder $previousDateHolder")
-        var previousDateSplitter = previousDateHolder.toString().split(" ").toTypedArray()
-        Log.d("debugWeight", "previousDateSplitter $previousDateSplitter")
-
+        val previousDateSplitter = previousDateHolder.toString().split(" ").toTypedArray()
         val previousDate = previousDateSplitter[0].drop(1).toString()
-        Log.d("debugWeight", "previousDate $previousDate")
 
         // Today's Date
-        Log.d("debugWeight", "todayDateHolder $dateValue")
-        var todayDateSplitter = dateValue.toString().split(" ").toTypedArray()
-        Log.d("debugWeight", "todayDateSplitter $todayDateSplitter")
+        val todayDateSplitter = dateValue.toString().split(" ").toTypedArray()
+        val todayDate = todayDateSplitter[0]
 
-        var todayDate = todayDateSplitter[0]
+
+        // Debug logs previousDate
+        Log.d("debugWeight", "previousDateHolder $previousDateHolder")
+        Log.d("debugWeight", "previousDateSplitter $previousDateSplitter")
+        // Result logs previousDate
+        Log.d("debugWeight", "previousDate $previousDate")
+
+        // Debug logs Today's Date
+        Log.d("debugWeight", "todayDateHolder $dateValue")
+        Log.d("debugWeight", "todayDateSplitter $todayDateSplitter")
+        // Result logs Today's Date
         Log.d("debugWeight", "todayDate $todayDate")
+
+        // Logs of Boolean result comparing the two dates
         Log.d("debugWeight", "boolean " + todayDate.equals("2021/12/08",true))
 
         //dialog
@@ -75,15 +83,16 @@ class WeightActivity : AppCompatActivity() {
 
                 if(userName.trim().isNotEmpty()) {
 
-                    Log.d("debugWeight","dataUserName $userName")
-                    Log.d("debugWeight", "dataUserWeight $userWeight")
-
                     // Block multiple date input per day
                     if (todayDate == previousDate) {
 
                         // Toast date already set Today
-                        Toast.makeText(context,
-                            "Le poids de l'utilisateur a déjà été ajouté aujourd'hui !", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            context,
+                            getString(R.string.toast_weight_already_set),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
                     } else {
 
                         // Insert data
@@ -100,21 +109,33 @@ class WeightActivity : AppCompatActivity() {
 
                             database.getWeightDao().insertAll(data)
 
-                            // Test logs for input
-                            Log.d("debugWeight", "insertData $data")
+                            // Test logs for input data
+                            Log.d(
+                                "debugWeight",
+                                "insertData $data"
+                            )
 
                             // Success toast
-                            Toast.makeText(context,
-                                "Le poids de l'utilisateur: $userName a été ajouté !", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                context,
+                                "Le poids de l'utilisateur: $userName a été ajouté !",
+                                Toast.LENGTH_SHORT
+                            ).show()
 
                         } catch (e: Exception){
                             Log.d("Error", "$e")
                         }
                     }
-
+                    // Close dialog
                     dialog.dismiss()
                 }else{
-                    Toast.makeText(context, "Saisir un nom d'utilisateur !", Toast.LENGTH_SHORT).show()
+
+                    Toast.makeText(
+                        context,
+                        getString(R.string.error_missing_username),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
                 }
             }
 

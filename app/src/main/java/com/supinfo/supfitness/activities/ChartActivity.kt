@@ -39,7 +39,6 @@ class ChartActivity : AppCompatActivity() {
         // Processing data on chart creation
         lineList = ArrayList()
         var x = 0f
-        var y = 0f
 
         try {
             for (y in dataWeights) {
@@ -51,6 +50,8 @@ class ChartActivity : AppCompatActivity() {
             throw e
         }
 
+
+        //Creating Chart and styling
         lineDataSet = LineDataSet(lineList, "Weight")
         lineData = LineData(lineDataSet)
         lineChart.data=lineData

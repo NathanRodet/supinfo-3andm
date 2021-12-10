@@ -12,4 +12,6 @@
     <string name="logo_splash_screen_description">Logo for splash screen</string>
     <string name="MAPS_API_KEY">AIzaSyAA9YDQuyiKT1sdpdRVktZQR7dzp8XdGuw</string>
     <string name="username_input_hint">Saisir un nom</string>
+    <string name="toast_weight_already_set">Le poids de l\'utilisateur a déjà été ajouté aujourd\'hui !</string>
+    <string name="error_missing_username">Saisir un nom d\'utilisateur !</string>
 </resources>

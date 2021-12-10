@@ -12,6 +12,11 @@ class TrackActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_track)
 
+
+
+
+
+
         // TabLayout Navigation
         val buttonWeight: Button = findViewById<Button>(R.id.buttonWeight)
         val buttonTrack: Button = findViewById<Button>(R.id.buttonTrack)
