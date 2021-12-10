@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import com.supinfo.supfitness.R

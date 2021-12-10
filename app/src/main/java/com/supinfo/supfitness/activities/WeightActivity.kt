@@ -33,27 +33,22 @@ class WeightActivity : AppCompatActivity() {
         // Previous Date
         val previousDateHolder = database.getWeightDao().getDates()
         val previousDateSplitter = previousDateHolder.toString().split(" ").toTypedArray()
-        val previousDate = previousDateSplitter[0].drop(1).toString()
+        val previousDate = previousDateSplitter[0].drop(1)
 
         // Today's Date
-        val todayDateSplitter = dateValue.toString().split(" ").toTypedArray()
+        val todayDateSplitter = dateValue.split(" ").toTypedArray()
         val todayDate = todayDateSplitter[0]
 
 
         // Debug logs previousDate
         Log.d("debugWeight", "previousDateHolder $previousDateHolder")
-        Log.d("debugWeight", "previousDateSplitter $previousDateSplitter")
         // Result logs previousDate
         Log.d("debugWeight", "previousDate $previousDate")
 
         // Debug logs Today's Date
         Log.d("debugWeight", "todayDateHolder $dateValue")
-        Log.d("debugWeight", "todayDateSplitter $todayDateSplitter")
         // Result logs Today's Date
         Log.d("debugWeight", "todayDate $todayDate")
-
-        // Logs of Boolean result comparing the two dates
-        Log.d("debugWeight", "boolean " + todayDate.equals("2021/12/08",true))
 
         //dialog
         fun showDialog(context: Context){

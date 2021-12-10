@@ -18,18 +18,18 @@ class TrackActivity : AppCompatActivity() {
 
 
         // TabLayout Navigation
-        val buttonWeight: Button = findViewById<Button>(R.id.buttonWeight)
-        val buttonTrack: Button = findViewById<Button>(R.id.buttonTrack)
-        val buttonChart: Button = findViewById<Button>(R.id.buttonChart)
+        val buttonWeight: Button = findViewById(R.id.buttonWeight)
+        val buttonTrack: Button = findViewById(R.id.buttonTrack)
+        val buttonChart: Button = findViewById(R.id.buttonChart)
         buttonTrack.setBackgroundColor(Color.parseColor("#33018786"))
 
-        buttonWeight.setOnClickListener(){
+        buttonWeight.setOnClickListener{
             startActivity(Intent(this, WeightActivity::class.java))
         }
-        buttonTrack.setOnClickListener(){
+        buttonTrack.setOnClickListener{
             startActivity(Intent(this, TrackActivity::class.java))
         }
-        buttonChart.setOnClickListener(){
+        buttonChart.setOnClickListener{
             startActivity(Intent(this, ChartActivity::class.java))
         }
     }
