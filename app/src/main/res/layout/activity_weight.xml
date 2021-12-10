@@ -16,10 +16,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/tab_layout" />
-
+        <include layout="@layout/tab_layout"/>
 
     </LinearLayout>
 
