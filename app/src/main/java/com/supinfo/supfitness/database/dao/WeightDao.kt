@@ -1,10 +1,7 @@
 package com.supinfo.supfitness.database.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.supinfo.supfitness.database.data.Weight
 
 @Dao
@@ -31,10 +28,17 @@ interface WeightDao {
 
     @Query("SELECT * FROM Weight")
     fun getAll(): List<Weight>
+
+    @Query("SELECT * FROM Weight")
+    fun getAllLiveData(): LiveData<List<Weight>>
+
     // Used in WeightActivity
     @Insert
     fun insertAll(vararg weights: Weight)
     // Used in WeightActivity
     @Delete
     fun delete(weight: Weight)
+
+    @Update
+    fun update(weight: Weight)
 }

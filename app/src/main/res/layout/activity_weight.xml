@@ -18,6 +18,15 @@
 
         <include layout="@layout/tab_layout"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weightRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:itemCount="5"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="38dp"
+            tools:listitem="@layout/weight_card_view" />
+
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

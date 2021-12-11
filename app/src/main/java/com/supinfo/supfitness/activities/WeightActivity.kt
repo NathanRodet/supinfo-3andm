@@ -10,25 +10,54 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Window
 import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.supinfo.supfitness.R
+import com.supinfo.supfitness.views.weightAdapter
 import com.supinfo.supfitness.database.AppDatabase
 import com.supinfo.supfitness.database.data.Weight
 import com.supinfo.supfitness.utilities.GetDate
+import kotlinx.android.synthetic.main.activity_weight.*
 
 class WeightActivity : AppCompatActivity() {
+
+    lateinit var data: MutableList<Weight>
+    lateinit var weightAdapter: weightAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weight)
 
+
         //Instance Database from companion object
-        val database = AppDatabase.getInstance(this)
+        var database = AppDatabase.getInstance(this)
+
+        fun deleteItem(index : Int){
+            if(::data.isInitialized){
+                data.removeAt(index)
+                Log.d("debug", data.toString())
+                database.getWeightDao().delete(data[index])
+                database.getWeightDao().update(data[index])
+                weightAdapter.setItems(data)
+            }
+        }
+
+        val allWeightData = database.getWeightDao().getAll()
+        data = allWeightData as MutableList<Weight>
+        Log.d("debugGetALl", allWeightData.toString())
+        weightRecyclerView.apply {
+
+            layoutManager = LinearLayoutManager(this@WeightActivity)
+            adapter = weightAdapter(data){index -> deleteItem(index)}
+
+        }
+
+
 
         // Preparing data for database insert and checking boolean
         val setDate = GetDate()
         val dateValue = setDate.getCurrentDateTime()
-
 
         // Previous Date
         val previousDateHolder = database.getWeightDao().getDates()
