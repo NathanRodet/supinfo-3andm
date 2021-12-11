@@ -38,7 +38,7 @@ class ChartActivity : AppCompatActivity() {
             for (y in dataWeights) {
                 x += 1f
                 lineList.add(Entry(x, y))
-                Log.d("DebugChart", "entry $x  $y")
+                Log.d("debugChart", "entry $x  $y")
             }
         }catch (e: Exception){
             throw e

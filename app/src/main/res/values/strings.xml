@@ -17,4 +17,11 @@
     <string name="title_activity_track">TrackActivity</string>
     <string name="permission_location">Activer les permissions de localisation</string>
     <string name="permission_location_required">Les permissions de localisation sont obligatoires pour le bon fonctionnement de l\'application. Voulez-vous les activer ?</string>
+    <string name="cardview_date">date</string>
+    <string name="cardview_user">user</string>
+    <string name="cardview_weight">poids</string>
+    <string name="cardview_delete">supprimer</string>
+    <string name="dateText">Date:</string>
+    <string name="userText">Nom:</string>
+    <string name="userTextRecyclerView">Poids:</string>
 </resources>

@@ -41,7 +41,10 @@ dependencies {
     def roomVersion             = "2.3.0"
     def core_ktx                = "1.7.0"
     def googleVersion           = "18.0.1"
+    def appCenterSdkVersion = '4.3.1'
 
+    implementation      "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation      "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     implementation      ("androidx.room:room-runtime:$roomVersion")
     annotationProcessor ("androidx.room:room-compiler:$roomVersion")
     kapt                ("androidx.room:room-compiler:$roomVersion")
