@@ -15,4 +15,6 @@
     <string name="toast_weight_already_set">Le poids de l\'utilisateur a déjà été ajouté aujourd\'hui !</string>
     <string name="error_missing_username">Saisir un nom d\'utilisateur !</string>
     <string name="title_activity_track">TrackActivity</string>
+    <string name="permission_location">Activer les permissions de localisation</string>
+    <string name="permission_location_required">Les permissions de localisation sont obligatoires pour le bon fonctionnement de l\'application. Voulez-vous les activer ?</string>
 </resources>

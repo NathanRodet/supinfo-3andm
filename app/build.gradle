@@ -40,7 +40,7 @@ dependencies {
     def MPAndroidChartVersion   = "3.1.0"
     def roomVersion             = "2.3.0"
     def core_ktx                = "1.7.0"
-    def googleVersion           = "18.0.0"
+    def googleVersion           = "18.0.1"
 
     implementation      ("androidx.room:room-runtime:$roomVersion")
     annotationProcessor ("androidx.room:room-compiler:$roomVersion")
@@ -49,6 +49,7 @@ dependencies {
     implementation      ("androidx.core:core-ktx:$core_ktx")
     implementation      ("com.github.PhilJay:MPAndroidChart:v$MPAndroidChartVersion")
     implementation      ("com.google.android.gms:play-services-maps:$googleVersion")
+    implementation      ("pub.devrel:easypermissions:3.0.0")
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'

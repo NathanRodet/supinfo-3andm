@@ -12,6 +12,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Polyline
 import com.supinfo.supfitness.R
 import com.supinfo.supfitness.databinding.ActivityTrackBinding
 
@@ -19,6 +20,11 @@ class TrackActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityTrackBinding
+    private var isTracking = false
+    private var pathPoints = mutableListOf<Polyline>()
+
+    // declare a global variable of FusedLocationProviderClient
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +36,10 @@ class TrackActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
+
+
 
         // TabLayout Navigation
         val buttonWeight: Button = findViewById(R.id.buttonWeight)
@@ -57,13 +67,16 @@ class TrackActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+
 
         // Add a marker in Sydney and move the camera
         val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
+
 
 }
