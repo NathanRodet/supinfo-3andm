@@ -11,7 +11,6 @@ import android.widget.ImageView
 import com.supinfo.supfitness.R
 import com.supinfo.supfitness.databinding.ActivitySplashScreenBinding
 
-
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 

@@ -165,8 +165,6 @@ class WeightActivity : AppCompatActivity() {
             dialog.show()
         }
 
-
-
         val buttonAdd: FloatingActionButton = findViewById(R.id.fab)
         //fab button
         buttonAdd.setOnClickListener {

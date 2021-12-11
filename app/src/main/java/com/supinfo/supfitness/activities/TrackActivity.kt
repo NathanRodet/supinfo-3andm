@@ -39,10 +39,12 @@ class TrackActivity : AppCompatActivity(), OnMapReadyCallback {
 //        mapFragment.getMapAsync(this)
         // Get current location
 
+        // Call move to current location fab button
         val fetchLocationButton: FloatingActionButton = findViewById(R.id.fabFetchLocation)
-
+        // If tested on emulator, be aware you need to select an emulator with playstore activated and set a position by default
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         fetchLocation()
+
         //Get current location on demand
         fetchLocationButton.setOnClickListener {
             fetchLocation()
