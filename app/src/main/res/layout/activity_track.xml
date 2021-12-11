@@ -36,18 +36,19 @@ tools:context=".activities.TrackActivity">
         android:layout_marginBottom="30dp"
         android:contentDescription="@string/add_button"
         android:src="@drawable/ic_track_fab"
-        app:layout_constraintBottom_toTopOf="@id/fabAddMarker"
+        app:layout_constraintBottom_toTopOf="@id/fabFetchLocation"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="ImageContrastCheck,DuplicateSpeakableTextCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddMarker"
+        android:id="@+id/fabFetchLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
         android:contentDescription="@string/add_button"
+        android:src="@drawable/ic_fab_position"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"

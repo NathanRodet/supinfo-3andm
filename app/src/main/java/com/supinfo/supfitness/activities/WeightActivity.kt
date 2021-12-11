@@ -24,7 +24,6 @@ class WeightActivity : AppCompatActivity() {
     lateinit var data: MutableList<Weight>
     lateinit var weightAdapter: weightAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weight)
@@ -166,8 +165,9 @@ class WeightActivity : AppCompatActivity() {
             dialog.show()
         }
 
-        val buttonAdd: FloatingActionButton = findViewById(R.id.fab)
 
+
+        val buttonAdd: FloatingActionButton = findViewById(R.id.fab)
         //fab button
         buttonAdd.setOnClickListener {
             Log.d("debug", "click")
