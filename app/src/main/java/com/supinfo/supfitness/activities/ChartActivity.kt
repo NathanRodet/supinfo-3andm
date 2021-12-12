@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -38,7 +37,7 @@ class ChartActivity : AppCompatActivity() {
             for (y in dataWeights) {
                 x += 1f
                 lineList.add(Entry(x, y))
-                Log.d("debugChart", "entry $x  $y")
+
             }
         }catch (e: Exception){
             throw e

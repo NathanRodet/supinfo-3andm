@@ -9,9 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.widget.Button
-import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior.getTag
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -58,7 +56,7 @@ class TrackActivity : AppCompatActivity(), OnMapReadyCallback {
         //Get current location on demand
         fetchLocationButton.setOnClickListener {
             fetchLocation()
-            Log.d("debugMapAfterFetch", "$currentLocation")
+
         }
 
 

@@ -10,7 +10,7 @@ import com.supinfo.supfitness.R
 import com.supinfo.supfitness.database.data.Weight
 import kotlinx.android.synthetic.main.weight_card_view.view.*
 
-class weightAdapter(private val allWeight: List<Weight>, val onClickDelete: (Int) -> Unit) : RecyclerView.Adapter<weightAdapter.ViewHolder>(){
+class WeightAdapter(private val allWeight: List<Weight>) : RecyclerView.Adapter<WeightAdapter.ViewHolder>(){
 
 private var listData : MutableList<Weight> = allWeight as MutableList<Weight>
 

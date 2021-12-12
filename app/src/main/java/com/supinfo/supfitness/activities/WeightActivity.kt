@@ -13,16 +13,15 @@ import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.supinfo.supfitness.R
-import com.supinfo.supfitness.views.weightAdapter
 import com.supinfo.supfitness.database.AppDatabase
 import com.supinfo.supfitness.database.data.Weight
 import com.supinfo.supfitness.utilities.GetDate
+import com.supinfo.supfitness.views.WeightAdapter
 import kotlinx.android.synthetic.main.activity_weight.*
 
 class WeightActivity : AppCompatActivity() {
 
     lateinit var data: MutableList<Weight>
-    lateinit var weightAdapter: weightAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,25 +29,16 @@ class WeightActivity : AppCompatActivity() {
 
 
         //Instance Database from companion object
-        var database = AppDatabase.getInstance(this)
+        val database = AppDatabase.getInstance(this)
 
-        fun deleteItem(index : Int){
-            if(::data.isInitialized){
-                data.removeAt(index)
-                Log.d("debug", data.toString())
-                database.getWeightDao().delete(data[index])
-                database.getWeightDao().update(data[index])
-                weightAdapter.setItems(data)
-            }
-        }
+
 
         val allWeightData = database.getWeightDao().getAll()
         data = allWeightData as MutableList<Weight>
-        Log.d("debugGetALl", allWeightData.toString())
         weightRecyclerView.apply {
 
             layoutManager = LinearLayoutManager(this@WeightActivity)
-            adapter = weightAdapter(data){index -> deleteItem(index)}
+            adapter = WeightAdapter(data)
 
         }
 
@@ -67,16 +57,6 @@ class WeightActivity : AppCompatActivity() {
         val todayDateSplitter = dateValue.split(" ").toTypedArray()
         val todayDate = todayDateSplitter[0]
 
-
-        // Debug logs previousDate
-        Log.d("debugWeight", "previousDateHolder $previousDateHolder")
-        // Result logs previousDate
-        Log.d("debugWeight", "previousDate $previousDate")
-
-        // Debug logs Today's Date
-        Log.d("debugWeight", "todayDateHolder $dateValue")
-        // Result logs Today's Date
-        Log.d("debugWeight", "todayDate $todayDate")
 
         //dialog
         fun showDialog(context: Context){
@@ -170,7 +150,7 @@ class WeightActivity : AppCompatActivity() {
         val buttonAdd: FloatingActionButton = findViewById(R.id.fab)
         //fab button
         buttonAdd.setOnClickListener {
-            Log.d("debug", "click")
+
             showDialog(this)
         }
 
