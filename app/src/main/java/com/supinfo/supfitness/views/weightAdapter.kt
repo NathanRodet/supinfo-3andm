@@ -30,12 +30,6 @@ private var listData : MutableList<Weight> = allWeight as MutableList<Weight>
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setItems(items: List<Weight>){
-    listData = items as MutableList<Weight>
-        notifyDataSetChanged()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
     fun deleteItem(index : Int){
         listData.removeAt(index)
         notifyDataSetChanged()
@@ -43,7 +37,7 @@ private var listData : MutableList<Weight> = allWeight as MutableList<Weight>
 
     override fun getItemCount() = listData.size
 
-    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view){
+    inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
 
         fun bind(index : Int){
 
