@@ -145,6 +145,8 @@ class WeightActivity : AppCompatActivity() {
                                 Toast.LENGTH_SHORT
                             ).show()
 
+                            startActivity(Intent(this, WeightActivity::class.java))
+
                         } catch (e: Exception){
                             Log.d("Error", "$e")
                         }

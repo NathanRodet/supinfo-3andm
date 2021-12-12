@@ -7,7 +7,11 @@ import android.graphics.Color
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.widget.Button
+import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior.getTag
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -20,40 +24,56 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.supinfo.supfitness.R
 
+
 class TrackActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var mMap: GoogleMap
-    private var currentLocation : Location? = null
-    var fusedLocationProviderClient: FusedLocationProviderClient? = null
+
+    private var currentLocation: Location? = null
+    private var fusedLocationProviderClient: FusedLocationProviderClient? = null
     private val permissionCode = 101
+    private var isRunning: Boolean = false
+
+    var mainHandler: Handler? = null
+
+    private var updateTextTask = object : Runnable {
+        override fun run() {
+            fetchLocation()
+            mainHandler?.postDelayed(this, 2500)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_track)
 
-
-//        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-//        val mapFragment = supportFragmentManager
-//            .findFragmentById(R.id.map) as SupportMapFragment
-//        mapFragment.getMapAsync(this)
         // Get current location
-
+        //Handler that focus the map on your position
+        mainHandler = Handler(Looper.getMainLooper())
         // Call move to current location fab button
         val fetchLocationButton: FloatingActionButton = findViewById(R.id.fabFetchLocation)
         // If tested on emulator, be aware you need to select an emulator with playstore activated and set a position by default
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        fetchLocation()
 
         //Get current location on demand
         fetchLocationButton.setOnClickListener {
             fetchLocation()
+            Log.d("debugMapAfterFetch", "$currentLocation")
+        }
+
+
+        val playButton: FloatingActionButton = findViewById(R.id.fabPlayTrack)
+        val stopButton: FloatingActionButton = findViewById(R.id.fabStopTrack)
+
+        playButton.setOnClickListener {
+            isRunning = true
+        }
+        playButton.setOnClickListener {
+            isRunning = false
         }
 
 
 
-
-        // TabLayout Navigation
         val buttonWeight: Button = findViewById(R.id.buttonWeight)
         val buttonTrack: Button = findViewById(R.id.buttonTrack)
         val buttonChart: Button = findViewById(R.id.buttonChart)
@@ -70,45 +90,54 @@ class TrackActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    override fun onPause() {
+        super.onPause()
+        mainHandler?.removeCallbacks(updateTextTask)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainHandler?.post(updateTextTask)
+    }
 
     private fun fetchLocation() {
-        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), permissionCode)
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                permissionCode)
             return
         }
 
         val task = fusedLocationProviderClient!!.lastLocation
         task.addOnSuccessListener { location ->
             currentLocation = location
-            val supportMapFragment = (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?)
+            val supportMapFragment =
+                (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?)
             supportMapFragment!!.getMapAsync(this@TrackActivity)
         }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         val latLng = LatLng(currentLocation!!.latitude, currentLocation!!.longitude)
+        //Add marker
         val markerOptions = MarkerOptions().position(latLng).title("Votre position")
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15f))
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16f))
         googleMap.addMarker(markerOptions)
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        when(requestCode){
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+    ) {
+        when (requestCode) {
             this.permissionCode -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     fetchLocation()
                 }
             }

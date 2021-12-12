@@ -6,27 +6,28 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".activities.TrackActivity">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintLeft_toRightOf="parent"
-    android:background="@color/white"
-    android:orientation="vertical">
-
-    <include layout="@layout/tab_layout"/>
-
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.TrackActivity"
-        tools:ignore="FragmentTagUsage" />
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</LinearLayout>
+        <include layout="@layout/tab_layout" />
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".activities.TrackActivity"
+            tools:ignore="FragmentTagUsage" />
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabViewTrack"
@@ -53,5 +54,29 @@ tools:context=".activities.TrackActivity">
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="ImageContrastCheck" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabPlayTrack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/add_button"
+        android:src="@drawable/ic_track_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fabStopTrack"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabStopTrack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/add_button"
+        android:src="@drawable/ic_track_stop"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toStartOf="@+id/fabFetchLocation"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

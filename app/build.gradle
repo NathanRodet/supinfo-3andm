@@ -54,6 +54,7 @@ dependencies {
     implementation      ("com.github.PhilJay:MPAndroidChart:v$MPAndroidChartVersion")
     implementation      ("com.google.android.gms:play-services-maps:$googleVersion")
     implementation      ("pub.devrel:easypermissions:3.0.0")
+    implementation 'com.google.maps.android:places-ktx:0.4.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
