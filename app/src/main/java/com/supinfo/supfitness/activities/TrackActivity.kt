@@ -68,7 +68,7 @@ class TrackActivity : AppCompatActivity(), OnMapReadyCallback {
         playButton.setOnClickListener {
             isRunning = true
         }
-        playButton.setOnClickListener {
+        stopButton.setOnClickListener {
             isRunning = false
         }
 
